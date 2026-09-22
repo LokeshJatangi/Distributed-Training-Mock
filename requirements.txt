@@ -1,5 +1,5 @@
-# Python 3.12 -- torch has no 3.14 wheels, and 3.12 is what this was verified on.
-torch==2.14.0
+# Verified with Python 3.12 and PyTorch 2.9.1.
+torch==2.9.1
 numpy>=2.0
 matplotlib>=3.8
 # notebook + tests

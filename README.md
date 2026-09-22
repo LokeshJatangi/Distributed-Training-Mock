@@ -253,7 +253,7 @@ The formulas reproduce the ZeRO paper's Table 1 exactly — 120 / 31.4 / 16.6 / 
 
 https://colab.research.google.com/github/LokeshJatangi/Distributed-Training-Mock/blob/main/zero_32_virtual_gpus.ipynb
 
-**Local** (Python 3.12 — torch has no 3.14 wheels yet):
+**Local** (verified with Python 3.12 and PyTorch 2.9.1):
 
 ```bash
 git clone https://github.com/LokeshJatangi/Distributed-Training-Mock.git
@@ -330,5 +330,6 @@ All paper numbers were read from the papers, not recalled.
 
 Ring all-reduce: Patarasuk & Yuan, JPDC 69(2), 2009 (no arXiv entry).
 
-PyTorch internals were read from the installed source at torch 2.14.0 — `ProcessGroupGloo.cpp`
-for gloo's reduce-scatter, and `_fsdp_init.py` / `_fsdp_collectives.py` for FSDP2's CPU paths.
+The distributed cross-checks were run with PyTorch 2.9.1. Relevant implementation files are
+`ProcessGroupGloo.cpp` for gloo's reduce-scatter and `_fsdp_init.py` / `_fsdp_collectives.py`
+for FSDP2's CPU paths.
