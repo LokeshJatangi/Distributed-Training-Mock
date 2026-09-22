@@ -1,0 +1,494 @@
+{
+  "env": {
+    "python": "3.12.2",
+    "torch": "2.9.1+cu128",
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "cpu_count": 12,
+    "is_colab": false,
+    "source_sha256": "ff620a58469d0fd7e6e2574f0cc0d867565d44248d65296f9b45ce858cbf4cdf"
+  },
+  "config": {
+    "preset": "xs",
+    "world": 32,
+    "steps": 20,
+    "vocab": 509,
+    "d_model": 64,
+    "n_layers": 4,
+    "n_heads": 4,
+    "seq": 64
+  },
+  "space": {
+    "world": 32,
+    "psi": 269821,
+    "psi_padded": 271360,
+    "pad_numel": 1539,
+    "pad_frac": 0.005671432783018868,
+    "shard_numel_total": 8480,
+    "n_groups": 7,
+    "n_params": 54,
+    "max_group_numel": 50176,
+    "n_straddling": 25,
+    "max_pieces": 32,
+    "groups": {
+      "embed": {
+        "raw": 36672,
+        "padded": 36864,
+        "shard": 1152,
+        "pad": 192,
+        "pad_frac": 0.005208333333333333
+      },
+      "block0": {
+        "raw": 49984,
+        "padded": 50176,
+        "shard": 1568,
+        "pad": 192,
+        "pad_frac": 0.003826530612244898
+      },
+      "block1": {
+        "raw": 49984,
+        "padded": 50176,
+        "shard": 1568,
+        "pad": 192,
+        "pad_frac": 0.003826530612244898
+      },
+      "block2": {
+        "raw": 49984,
+        "padded": 50176,
+        "shard": 1568,
+        "pad": 192,
+        "pad_frac": 0.003826530612244898
+      },
+      "block3": {
+        "raw": 49984,
+        "padded": 50176,
+        "shard": 1568,
+        "pad": 192,
+        "pad_frac": 0.003826530612244898
+      },
+      "ln_f": {
+        "raw": 128,
+        "padded": 512,
+        "shard": 16,
+        "pad": 384,
+        "pad_frac": 0.75
+      },
+      "head": {
+        "raw": 33085,
+        "padded": 33280,
+        "shard": 1040,
+        "pad": 195,
+        "pad_frac": 0.005859375
+      }
+    }
+  },
+  "per_stage": {
+    "ZeRO-0": {
+      "peak_bytes_per_rank": 5837188,
+      "buckets": {
+        "params": 1085440,
+        "grads": 1085440,
+        "opt": 2170880,
+        "act": 1495428,
+        "transient": 0
+      },
+      "state_bytes": 4341760,
+      "comm_bytes_per_step": 2103040,
+      "comm_ratio_vs_ddp": 1.0,
+      "n_collectives_per_step": 14,
+      "opt_elementwise_ops": 2713600,
+      "final_loss": 6.316337138414383,
+      "wall_s": 10.499941539997963
+    },
+    "ZeRO-1": {
+      "peak_bytes_per_rank": 3768068,
+      "buckets": {
+        "params": 1085440,
+        "grads": 1119360,
+        "opt": 67840,
+        "act": 1495428,
+        "transient": 0
+      },
+      "state_bytes": 2272640,
+      "comm_bytes_per_step": 2103040,
+      "comm_ratio_vs_ddp": 1.0,
+      "n_collectives_per_step": 14,
+      "opt_elementwise_ops": 84800,
+      "final_loss": 6.316337138414383,
+      "wall_s": 10.338142508000601
+    },
+    "ZeRO-2": {
+      "peak_bytes_per_rank": 2682628,
+      "buckets": {
+        "params": 1085440,
+        "grads": 33920,
+        "opt": 67840,
+        "act": 1495428,
+        "transient": 200704
+      },
+      "state_bytes": 1187200,
+      "comm_bytes_per_step": 2103040,
+      "comm_ratio_vs_ddp": 1.0,
+      "n_collectives_per_step": 14,
+      "opt_elementwise_ops": 84800,
+      "final_loss": 6.316337138414383,
+      "wall_s": 9.625181813000381
+    },
+    "ZeRO-3": {
+      "peak_bytes_per_rank": 1750656,
+      "buckets": {
+        "params": 33920,
+        "grads": 33920,
+        "opt": 67840,
+        "act": 1495428,
+        "transient": 401408
+      },
+      "state_bytes": 135680,
+      "comm_bytes_per_step": 3154560,
+      "comm_ratio_vs_ddp": 1.5,
+      "n_collectives_per_step": 21,
+      "opt_elementwise_ops": 84800,
+      "final_loss": 6.316337138414383,
+      "wall_s": 13.234152189997985
+    }
+  },
+  "naive_zero1_comm_bytes_per_step": 3154560,
+  "activations_identical_across_ranks": true,
+  "activation_bytes": 1495428,
+  "flops_per_rank_per_step": {
+    "forward": 33529856,
+    "backward": 67059712,
+    "total": 100589568
+  },
+  "paper_table_check": [
+    {
+      "psi": 7500000000.0,
+      "world": 64,
+      "stage0": 120.0,
+      "paper0": 120,
+      "stage1": 31.40625,
+      "paper1": 31.4,
+      "stage2": 16.640625,
+      "paper2": 16.6,
+      "stage3": 1.875,
+      "paper3": 1.88
+    },
+    {
+      "psi": 128000000000.0,
+      "world": 64,
+      "stage0": 2048.0,
+      "paper0": 2048,
+      "stage1": 536.0,
+      "paper1": 536,
+      "stage2": 284.0,
+      "paper2": 284,
+      "stage3": 32.0,
+      "paper3": 32
+    }
+  ],
+  "ablations": {
+    "no_reduce": {
+      "max_loss_delta": 0.2885844260454178,
+      "loss_fell": true
+    },
+    "shard_offset": {
+      "max_loss_delta": 0.23732611536979675,
+      "loss_fell": true
+    },
+    "no_all_gather": {
+      "max_loss_delta": 0.4613488167524338,
+      "loss_fell": false
+    },
+    "sum_not_mean": {
+      "max_loss_delta": 4.455447196960449e-06,
+      "loss_fell": true
+    }
+  },
+  "ring_vs_sequential_loss_drift": 1.341104507446289e-07,
+  "validation": {
+    "n_passed": 32,
+    "n_total": 32,
+    "all_passed": true,
+    "checks": [
+      {
+        "name": "psi not divisible by world",
+        "passed": true,
+        "detail": "Psi=269,821, Psi mod 32 = 29 -> padding is real",
+        "measured": 29,
+        "tolerance": null
+      },
+      {
+        "name": "shards tile the padded space",
+        "passed": true,
+        "detail": "32 x 8,480 = 271,360",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "reference actually learns",
+        "passed": true,
+        "detail": "loss 6.7188 -> 6.5351 (fell 0.1836; ln(vocab)=6.232)",
+        "measured": 0.18364691734313965,
+        "tolerance": 0.05
+      },
+      {
+        "name": "ZeRO-0 == ZeRO-1 bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-0 == ZeRO-2 bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-0 == ZeRO-3 bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-0 == ring-order reference bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-0 loss == reference bitwise",
+        "passed": true,
+        "detail": "max|dLoss|=0.000e+00",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-1 == ring-order reference bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-1 loss == reference bitwise",
+        "passed": true,
+        "detail": "max|dLoss|=0.000e+00",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-2 == ring-order reference bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-2 loss == reference bitwise",
+        "passed": true,
+        "detail": "max|dLoss|=0.000e+00",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-3 == ring-order reference bitwise",
+        "passed": true,
+        "detail": "max|delta|=0.000e+00, 0/54 tensors differ",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ZeRO-3 loss == reference bitwise",
+        "passed": true,
+        "detail": "max|dLoss|=0.000e+00",
+        "measured": 0.0,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ring vs sequential accumulation: drift is small in loss",
+        "passed": true,
+        "detail": "max|dLoss|=1.043e-07 (reordering 32 float sums, not a bug)",
+        "measured": 1.043081283569336e-07,
+        "tolerance": 0.0001
+      },
+      {
+        "name": "ring vs sequential accumulation: param drift recorded",
+        "passed": true,
+        "detail": "max|dParam|=2.643e-04, concentrated in zero-initialised biases where Adam's second moment is near zero",
+        "measured": 0.0002643444749992341,
+        "tolerance": null
+      },
+      {
+        "name": "model state strictly decreases with stage",
+        "passed": true,
+        "detail": "4,341,760 > 2,272,640 > 1,187,200 > 135,680",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-0 state == 16 x Psi_padded",
+        "passed": true,
+        "detail": "measured 4,341,760 vs 16 x 271,360 = 4,341,760",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-3 state == 16 x Psi_padded / world",
+        "passed": true,
+        "detail": "measured 135,680 vs 135,680 -> exactly 32.00x less than DDP",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "activation memory is IDENTICAL across all four stages",
+        "passed": true,
+        "detail": "1,495,428 B in every mode -- ZeRO shards model state and does nothing for activations",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-3 never materialises the full parameters",
+        "passed": true,
+        "detail": "params bucket peak 33,920 B = 4 x 8,480 (one shard, never Psi)",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-0 bytes == ring formula exactly",
+        "passed": true,
+        "detail": "measured 2,103,040 == sum 2(N-1)/N x P_g x 4 = 2,103,040",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-1 and ZeRO-2 cost exactly what DDP costs",
+        "passed": true,
+        "detail": "all three 2,103,040 B/rank/step, identical to the byte",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ZeRO-3 costs exactly 1.5x DDP",
+        "passed": true,
+        "detail": "3,154,560 / 2,103,040 = 1.5000",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "bytes sent == bytes received across ranks",
+        "passed": true,
+        "detail": "336,486,400 both ways",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "every rank sends the same number of bytes",
+        "passed": true,
+        "detail": "a ring is symmetric",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "naive ZeRO-1 is correct but costs 1.5x",
+        "passed": true,
+        "detail": "all_reduce-then-slice: 3,154,560 B/step = 1.500x, bitwise identical result (0.0e+00) -- a free footgun",
+        "measured": null,
+        "tolerance": null
+      },
+      {
+        "name": "ablation no_reduce is caught",
+        "passed": true,
+        "detail": "max|dLoss|=2.030e-01",
+        "measured": 0.2029864341020584,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ablation shard_offset is caught",
+        "passed": true,
+        "detail": "max|dLoss|=1.376e-01  (loss still fell -- a falling loss proves nothing)",
+        "measured": 0.13757559657096863,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ablation no_all_gather is caught",
+        "passed": true,
+        "detail": "max|dLoss|=2.274e-01",
+        "measured": 0.22744566202163696,
+        "tolerance": 0.0
+      },
+      {
+        "name": "ablation sum_not_mean is caught",
+        "passed": true,
+        "detail": "max|dLoss|=2.399e-06  (loss still fell -- a falling loss proves nothing)  [only a bitwise check catches this: Adam is scale-invariant]",
+        "measured": 2.3990869522094727e-06,
+        "tolerance": 0.0
+      },
+      {
+        "name": "two runs are bitwise identical",
+        "passed": true,
+        "detail": "thread interleaving does not affect the result: the ring's summation order is fixed by step index, not by arrival order",
+        "measured": 0.0,
+        "tolerance": 0.0
+      }
+    ]
+  },
+  "max_psi_table": {
+    "40GiB": {
+      "N=8": {
+        "ZeRO-0": 2013265920.0,
+        "ZeRO-1": 5856773585.454545,
+        "ZeRO-2": 8589934592.0,
+        "ZeRO-3": 14725602157.714285
+      },
+      "N=32": {
+        "ZeRO-0": 2013265920.0,
+        "ZeRO-1": 7362801078.857142,
+        "ZeRO-2": 13215283987.692308,
+        "ZeRO-3": 46854188683.63636
+      },
+      "N=64": {
+        "ZeRO-0": 2013265920.0,
+        "ZeRO-1": 7692478739.104478,
+        "ZeRO-2": 14518199310.422535,
+        "ZeRO-3": 73628010788.57143
+      },
+      "N=512": {
+        "ZeRO-0": 2013265920.0,
+        "ZeRO-1": 8006152629.436893,
+        "ZeRO-2": 15888896355.144508,
+        "ZeRO-3": 147256021577.14285
+      }
+    },
+    "80GiB": {
+      "N=8": {
+        "ZeRO-0": 4026531840.0,
+        "ZeRO-1": 11713547170.90909,
+        "ZeRO-2": 17179869184.0,
+        "ZeRO-3": 29451204315.42857
+      },
+      "N=32": {
+        "ZeRO-0": 4026531840.0,
+        "ZeRO-1": 14725602157.714285,
+        "ZeRO-2": 26430567975.384617,
+        "ZeRO-3": 93708377367.27272
+      },
+      "N=64": {
+        "ZeRO-0": 4026531840.0,
+        "ZeRO-1": 15384957478.208956,
+        "ZeRO-2": 29036398620.84507,
+        "ZeRO-3": 147256021577.14285
+      },
+      "N=512": {
+        "ZeRO-0": 4026531840.0,
+        "ZeRO-1": 16012305258.873787,
+        "ZeRO-2": 31777792710.289017,
+        "ZeRO-3": 294512043154.2857
+      }
+    }
+  },
+  "total_wall_s": 149.25316046999797
+}
